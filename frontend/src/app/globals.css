@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+/* ============================================
+   RESCUENODE ZERO — Military SOC Design System
+   ============================================ */
+
+@theme inline {
+  /* ── Core Colors ── */
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-elevated: #334155;
+  --color-border: #475569;
+  --color-border-active: #06b6d4;
+
+  /* ── Semantic Colors ── */
+  --color-cyan: #06b6d4;
+  --color-cyan-glow: #22d3ee;
+  --color-green: #22c55e;
+  --color-green-glow: #4ade80;
+  --color-amber: #f59e0b;
+  --color-red: #ef4444;
+  --color-slate-dim: #94a3b8;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  /* ── Fonts ── */
+  --font-display: "Orbitron", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+/* ── Base ── */
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ── Glassmorphism Cards ── */
+.card-glass {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  border-radius: 4px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-glass:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.08);
+}
+
+.card-glass-active {
+  border-color: var(--color-cyan);
+  box-shadow:
+    0 0 20px rgba(6, 182, 212, 0.15),
+    inset 0 1px 0 rgba(6, 182, 212, 0.1);
+}
+
+/* ── Pulsing Glow Animation ── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px currentColor; }
+  50% { opacity: 0.7; box-shadow: 0 0 16px currentColor; }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Scan Line Effect (subtle) ── */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+/* ── Badge Styles ── */
+.badge-online {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-green);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-latency {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--color-cyan);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-red);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* ── Filter Chip ── */
+.chip {
+  background: rgba(51, 65, 85, 0.5);
+  color: var(--color-text-secondary);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.chip:hover {
+  background: rgba(51, 65, 85, 0.8);
+  border-color: rgba(148, 163, 184, 0.5);
+}
+
+.chip-active {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--color-cyan);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+}
+
+/* ── Waveform ── */
+.waveform-bar {
+  background: var(--color-cyan);
+  border-radius: 1px;
+  transition: height 0.1s ease;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-dim);
+}
+
+/* ── Low Stock Row ── */
+.low-stock {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* ── Result Card Type Icons ── */
+.type-icon-hazmat {
+  color: var(--color-red);
+}
+
+.type-icon-medical {
+  color: var(--color-amber);
+}
+
+.type-icon-photo {
+  color: var(--color-cyan);
+}
+
+.type-icon-audio {
+  color: var(--color-green);
+}
+
+/* ── Loading Shimmer ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.5),
+    rgba(51, 65, 85, 0.5),
+    rgba(30, 41, 59, 0.5)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Upload Dropzone ── */
+.dropzone {
+  border: 2px dashed rgba(71, 85, 105, 0.5);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.dropzone-active {
+  border-color: var(--color-cyan);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+/* ── Score Bar ── */
+.score-bar {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-green));
+  transition: width 0.3s ease;
+}
