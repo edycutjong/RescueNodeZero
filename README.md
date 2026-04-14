@@ -12,10 +12,21 @@
 
 ## 📸 See it in Action
 
-<!-- Replace with actual GIF recording of the dashboard search workflow -->
-![RescueNode Zero Demo](./docs/architecture.png)
+### 1. Real-Time Concept Demo (Loop)
+<video src="https://github.com/user-attachments/assets/8aa5503a-9e80-4ba8-8109-24c0bca110b2" autoplay loop muted playsinline width="100%"></video>
 
-> *Try searching `chemical burn treatment acetone` — watch RRF fusion cross-reference HAZMAT and medical protocols in 0.9ms with zero internet.*
+### 2. Instant HAZMAT Lookup with RRF Fusion
+<video src="https://github.com/user-attachments/assets/6adc7cb2-9af0-4050-ac73-82ebc1708ba8" autoplay loop muted playsinline width="100%"></video>
+> *Searching `chemical burn treatment acetone` — watch RRF fusion cross-reference HAZMAT and medical protocols in 0.9ms with zero internet.*
+
+### 3. Medical Emergency Protocols
+<video src="https://github.com/user-attachments/assets/ee56c2e3-749a-45af-b9fa-371e796d4602" autoplay loop muted playsinline width="100%"></video>
+> *Advanced medical triage protocols (like Crush Syndrome) available instantly offline — critical for field extraction teams.*
+
+### 4. Multimodal Reconnaissance (Images & Audio)
+<video src="https://github.com/user-attachments/assets/5750db6e-c1d5-4c67-a3ed-abf08fb2b51e" autoplay loop muted playsinline width="100%"></video>
+<video src="https://github.com/user-attachments/assets/3a871184-f901-4a2c-bbb1-34fa44eaa92e" autoplay loop muted playsinline width="100%"></video>
+> *Cross-references standard text queries with MobileCLIP drone photo captions and Whisper-transcribed field audio reports.*
 
 ---
 
