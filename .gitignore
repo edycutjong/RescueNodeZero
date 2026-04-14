@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Next.js
+frontend/.next/
+frontend/out/
+frontend/.swc/
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Models (too large for git)
+models/
+*.bin
+*.pt
+*.onnx
+
+# Uploaded files
+uploads/
+backend/uploads/
+
+# Docker
+docker-data/
+
+# Logs
+*.log
