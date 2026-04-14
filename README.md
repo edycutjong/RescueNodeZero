@@ -27,22 +27,7 @@ RescueNode Zero is an offline-first disaster response intelligence system that c
 
 ## 🏗️ Architecture
 
-```
-┌──────────────────┐     ┌──────────────────────┐
-│   Next.js 16     │────▶│   FastAPI Backend     │
-│   React 19       │     │                       │
-│   Tailwind v4    │     │  ┌──────────────────┐ │
-│                  │     │  │  VectorStore      │ │
-│   SOC Dashboard  │     │  │  (Actian VectorAI │ │
-│   - SearchBar    │     │  │   DB Adapter)     │ │
-│   - FilterChips  │     │  └──────────────────┘ │
-│   - ResultCards  │     │  ┌──────────────────┐ │
-│   - Inventory    │     │  │  RRF Fusion       │ │
-│   - UploadZone   │     │  │  Embeddings       │ │
-└──────────────────┘     │  │  Whisper / CLIP   │ │
-                         │  └──────────────────┘ │
-                         └──────────────────────┘
-```
+![Architecture Diagram](./docs/architecture.png)
 
 ## 🚀 Quick Start
 

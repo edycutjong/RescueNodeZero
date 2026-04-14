@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Solid Cyan Background -->
+  <rect width="512" height="512" rx="100" fill="#06b6d4" />
+  
+  <!-- Outer Crosshair Ring -->
+  <circle cx="256" cy="256" r="160" fill="none" stroke="#FFFFFF" stroke-width="24" opacity="0.8" />
+  
+  <!-- Outer Crosshair Tick Marks -->
+  <line x1="256" y1="56" x2="256" y2="106" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" />
+  <line x1="256" y1="406" x2="256" y2="456" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" />
+  <line x1="56" y1="256" x2="106" y2="256" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" />
+  <line x1="406" y1="256" x2="456" y2="256" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" />
+
+  <!-- Inner Medical Cross / Rescue Node Symbol -->
+  <path d="M226 186 H286 V226 H326 V286 H286 V326 H226 V286 H186 V226 H226 V186 Z" fill="#FFFFFF" />
+  
+  <!-- Center Signal Dot -->
+  <circle cx="256" cy="256" r="16" fill="#06b6d4" />
+</svg>
