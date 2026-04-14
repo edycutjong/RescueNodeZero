@@ -19,8 +19,8 @@ frontend:
 	cd frontend && npm run dev -- -p 3000
 
 test:
-	@echo "Running backend tests..."
-	cd backend && pytest tests/ -v
+	@echo "Running backend tests with coverage..."
+	cd backend && python3 -m pytest tests/ -v --cov=. --cov-report=term-missing
 
 docker-build:
 	@echo "Building docker images..."
@@ -33,3 +33,9 @@ docker-up:
 docker-down:
 	@echo "Stopping Docker services..."
 	docker compose down
+
+capture-demo:
+	@echo "Installing Playwright and running demo capture..."
+	pip3 install playwright
+	python3 -m playwright install chromium
+	python3 scripts/capture_demo.py
