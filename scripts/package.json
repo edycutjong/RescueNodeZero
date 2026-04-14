@@ -1,0 +1,12 @@
+{
+  "name": "rescue-node-zero-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for RescueNode Zero",
+  "main": "record_demo.js",
+  "scripts": {
+    "record": "node record_demo.js"
+  },
+  "dependencies": {
+    "playwright": "^1.42.1"
+  }
+}
