@@ -22,25 +22,29 @@ export function ResultsGrid({ results, totalResults, isLoading }: ResultsGridPro
 
   if (results.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <svg
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="var(--color-text-muted)"
-          strokeWidth="1.5"
-          className="mb-4 opacity-40"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
-        <p className="text-[var(--color-text-muted)] font-[family-name:var(--font-mono)] text-sm">
-          Enter a query to search the offline knowledge base
+      <div className="flex flex-col items-center justify-center py-20 text-center">
+        {/* Animated Radar Sweep */}
+        <div className="radar-container mb-8">
+          <div className="radar-ping" />
+          <div className="radar-ring" />
+          <div className="radar-ring-inner" />
+          <div className="radar-ring-core" />
+          <div className="radar-sweep" />
+          {/* Fake blips */}
+          <div className="radar-dot" style={{ top: "18%", left: "70%" }} />
+          <div className="radar-dot" style={{ top: "65%", left: "25%", opacity: 0.5, width: 4, height: 4 }} />
+          <div className="radar-dot" style={{ top: "42%", left: "80%", opacity: 0.3, width: 3, height: 3 }} />
+        </div>
+        <p className="text-[var(--color-text-secondary)] font-[family-name:var(--font-mono)] text-sm tracking-wide">
+          AWAITING QUERY INPUT
         </p>
-        <p className="text-[var(--color-text-muted)] text-xs mt-2 opacity-60">
-          Try: &ldquo;chemical burn treatment&rdquo; or &ldquo;UN-1090&rdquo;
+        <p className="text-[var(--color-text-muted)] font-[family-name:var(--font-mono)] text-xs mt-2 opacity-60">
+          Try: &ldquo;chemical burn treatment&rdquo; &middot; &ldquo;chlorine gas&rdquo; &middot; &ldquo;crush syndrome&rdquo;
         </p>
+        <div className="mt-4 flex items-center gap-2 text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-cyan)] opacity-60">
+          <span className="w-1 h-1 rounded-full bg-[var(--color-cyan)] animate-pulse" />
+          44 documents indexed &middot; 16,896 vectors loaded
+        </div>
       </div>
     );
   }
@@ -56,8 +60,14 @@ export function ResultsGrid({ results, totalResults, isLoading }: ResultsGridPro
         </span>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-        {results.map((result) => (
-          <ResultCard key={result.id} result={result} />
+        {results.map((result, index) => (
+          <div
+            key={result.id}
+            className="card-enter"
+            style={{ animationDelay: `${index * 60}ms` }}
+          >
+            <ResultCard result={result} />
+          </div>
         ))}
       </div>
     </div>

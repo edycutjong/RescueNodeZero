@@ -57,7 +57,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Search protocols, HAZMAT codes, field reports..."
-          className="w-full pl-12 pr-4 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded text-[var(--color-text-primary)] text-base font-[family-name:var(--font-body)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-cyan)] focus:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all"
+          className="w-full pl-12 pr-4 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded text-[var(--color-text-primary)] text-base font-[family-name:var(--font-body)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-cyan)] focus:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all search-glow"
           autoComplete="off"
           spellCheck={false}
         />

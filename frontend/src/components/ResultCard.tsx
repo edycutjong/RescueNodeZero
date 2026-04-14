@@ -111,7 +111,7 @@ export function ResultCard({ result }: ResultCardProps) {
   const reporter = result.metadata?.reporter as string | undefined;
 
   return (
-    <div className="card-glass p-4 flex flex-col gap-3 group">
+    <div className={`card-glass p-4 flex flex-col gap-3 group hud-bracket ${priority === "IMMEDIATE" ? "priority-immediate" : ""}`}>
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">

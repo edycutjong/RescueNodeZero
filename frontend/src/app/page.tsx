@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import type { SearchFilters, SearchResultItem } from "@/lib/types";
 import { MOCK_SEARCH_RESULTS, MOCK_INVENTORY } from "@/lib/mock-data";
 import { SearchBar } from "@/components/SearchBar";
@@ -103,7 +103,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden relative scanline">
+    <div className="h-screen flex flex-col overflow-hidden relative scanline hud-grid">
       {/* ═══════════════════════ HEADER ═══════════════════════ */}
       <header className="shrink-0 px-6 py-3 flex items-center justify-between border-b border-[var(--color-border)] bg-[rgba(15,23,42,0.95)] backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
@@ -186,6 +186,68 @@ export default function Dashboard() {
           </div>
         </aside>
       </main>
+
+      {/* ═══════════════════════ STATUS BAR ═══════════════════════ */}
+      <StatusBar results={results.length} />
     </div>
+  );
+}
+
+/* ── Status bar declared outside render ── */
+function StatusBar({ results }: { results: number }) {
+  const [uptime, setUptime] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setUptime((prev) => prev + 1);
+    }, 1000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  const formatUptime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600).toString().padStart(2, "0");
+    const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, "0");
+    const s = (seconds % 60).toString().padStart(2, "0");
+    return `${h}:${m}:${s}`;
+  };
+
+  return (
+    <footer className="status-bar shrink-0 px-6 py-1.5 flex items-center justify-between text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)] z-10">
+      <div className="flex items-center gap-6">
+        <span>
+          SYS <span className="stat-value font-semibold">{formatUptime(uptime)}</span>
+        </span>
+        <span>
+          DOCS <span className="text-[var(--color-text-secondary)] font-semibold">44</span>
+        </span>
+        <span>
+          VECTORS <span className="text-[var(--color-text-secondary)] font-semibold">16,896</span>
+        </span>
+        <span>
+          LAST QUERY <span className="text-[var(--color-text-secondary)] font-semibold">{results > 0 ? `${results} hits` : "—"}</span>
+        </span>
+      </div>
+      <div className="flex items-center gap-4">
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          VectorAI DB
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          Embeddings
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          Whisper
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          CLIP
+        </span>
+      </div>
+    </footer>
   );
 }

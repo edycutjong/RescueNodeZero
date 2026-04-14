@@ -227,3 +227,181 @@ body {
   background: linear-gradient(90deg, var(--color-cyan), var(--color-green));
   transition: width 0.3s ease;
 }
+
+/* ══════════════════════════════════════════
+   WOW FACTOR — Military HUD Enhancements
+   ══════════════════════════════════════════ */
+
+/* ── Animated Grid Background (HUD overlay) ── */
+@keyframes grid-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+.hud-grid::before {
+  content: "";
+  position: fixed;
+  top: -40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-scroll 4s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Staggered Card Entrance ── */
+@keyframes card-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.card-enter {
+  animation: card-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Radar Sweep (empty state) ── */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes radar-ping {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+  100% { transform: scale(0.8); opacity: 0.6; }
+}
+
+.radar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.radar-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.radar-ring-inner {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+.radar-ring-core {
+  position: absolute;
+  inset: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+.radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(6, 182, 212, 0.15) 60deg,
+    transparent 120deg
+  );
+  animation: radar-sweep 3s linear infinite;
+}
+
+.radar-ping {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  animation: radar-ping 3s ease-in-out infinite;
+}
+
+.radar-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  box-shadow: 0 0 8px var(--color-cyan);
+}
+
+/* ── Priority Pulse (IMMEDIATE cards) ── */
+@keyframes priority-pulse {
+  0%, 100% { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+  50% { border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 12px rgba(239, 68, 68, 0.08); }
+}
+
+.priority-immediate {
+  animation: priority-pulse 3s ease-in-out infinite;
+}
+
+/* ── Search Bar Breathing Glow ── */
+@keyframes search-breathe {
+  0%, 100% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.2), 0 0 60px rgba(6, 182, 212, 0.05); }
+}
+
+.search-glow:focus {
+  animation: search-breathe 2.5s ease-in-out infinite;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(71, 85, 105, 0.5);
+}
+
+@keyframes counter-pulse {
+  0%, 100% { color: var(--color-cyan); }
+  50% { color: var(--color-cyan-glow); text-shadow: 0 0 8px rgba(6, 182, 212, 0.4); }
+}
+
+.stat-value {
+  animation: counter-pulse 4s ease-in-out infinite;
+}
+
+/* ── Corner Brackets (HUD decoration) ── */
+.hud-bracket {
+  position: relative;
+}
+
+.hud-bracket::before,
+.hud-bracket::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(6, 182, 212, 0.3);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.hud-bracket::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.hud-bracket::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
