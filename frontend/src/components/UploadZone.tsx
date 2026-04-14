@@ -83,22 +83,22 @@ export function UploadZone({ onUploadComplete }: UploadZoneProps) {
       />
 
       {isProcessing ? (
-        <div className="flex items-center justify-center gap-2 text-[var(--color-cyan)]">
-          <div className="w-4 h-4 border-2 border-[var(--color-cyan)] border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs font-[family-name:var(--font-mono)]">{status}</span>
+        <div className="flex items-center justify-center gap-2 text-(--color-cyan)">
+          <div className="w-4 h-4 border-2 border-(--color-cyan) border-t-transparent rounded-full animate-spin" />
+          <span className="text-xs font-mono">{status}</span>
         </div>
       ) : status ? (
-        <span className="text-xs font-[family-name:var(--font-mono)] text-[var(--color-green)]">
+        <span className="text-xs font-mono text-(--color-green)">
           {status}
         </span>
       ) : (
-        <div className="flex flex-col items-center gap-1 text-[var(--color-text-muted)]">
+        <div className="flex flex-col items-center gap-1 text-(--color-text-muted)">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-40">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="17 8 12 3 7 8" />
             <line x1="12" y1="3" x2="12" y2="15" />
           </svg>
-          <span className="text-[10px] font-[family-name:var(--font-mono)]">
+          <span className="text-[10px] font-mono">
             Drop photo/audio or click to upload
           </span>
         </div>

@@ -35,14 +35,14 @@ export function ResultsGrid({ results, totalResults, isLoading }: ResultsGridPro
           <div className="radar-dot" style={{ top: "65%", left: "25%", opacity: 0.5, width: 4, height: 4 }} />
           <div className="radar-dot" style={{ top: "42%", left: "80%", opacity: 0.3, width: 3, height: 3 }} />
         </div>
-        <p className="text-[var(--color-text-secondary)] font-[family-name:var(--font-mono)] text-sm tracking-wide">
+        <p className="text-(--color-text-secondary) font-mono text-sm tracking-wide">
           AWAITING QUERY INPUT
         </p>
-        <p className="text-[var(--color-text-muted)] font-[family-name:var(--font-mono)] text-xs mt-2 opacity-60">
+        <p className="text-(--color-text-muted) font-mono text-xs mt-2 opacity-60">
           Try: &ldquo;chemical burn treatment&rdquo; &middot; &ldquo;chlorine gas&rdquo; &middot; &ldquo;crush syndrome&rdquo;
         </p>
-        <div className="mt-4 flex items-center gap-2 text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-cyan)] opacity-60">
-          <span className="w-1 h-1 rounded-full bg-[var(--color-cyan)] animate-pulse" />
+        <div className="mt-4 flex items-center gap-2 text-[10px] font-mono text-(--color-cyan) opacity-60">
+          <span className="w-1 h-1 rounded-full bg-(--color-cyan) animate-pulse" />
           44 documents indexed &middot; 16,896 vectors loaded
         </div>
       </div>
@@ -52,10 +52,10 @@ export function ResultsGrid({ results, totalResults, isLoading }: ResultsGridPro
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-[var(--color-text-muted)] text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider">
+        <h2 className="text-(--color-text-muted) text-xs font-mono uppercase tracking-wider">
           Results
         </h2>
-        <span className="text-[var(--color-text-muted)] text-xs font-[family-name:var(--font-mono)]">
+        <span className="text-(--color-text-muted) text-xs font-mono">
           {totalResults} matches
         </span>
       </div>

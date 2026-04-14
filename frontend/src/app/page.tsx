@@ -105,21 +105,21 @@ export default function Dashboard() {
   return (
     <div className="h-screen flex flex-col overflow-hidden relative scanline hud-grid">
       {/* ═══════════════════════ HEADER ═══════════════════════ */}
-      <header className="shrink-0 px-6 py-3 flex items-center justify-between border-b border-[var(--color-border)] bg-[rgba(15,23,42,0.95)] backdrop-blur-sm z-10">
+      <header className="shrink-0 px-6 py-3 flex items-center justify-between border-b border-(--color-border) bg-[rgba(15,23,42,0.95)] backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded bg-gradient-to-br from-[var(--color-cyan)] to-[var(--color-green)] flex items-center justify-center">
+            <div className="w-8 h-8 rounded bg-linear-to-br from-(--color-cyan) to-(--color-green) flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
                 <path d="M12 8V12L15 15" />
               </svg>
             </div>
             <div>
-              <h1 className="font-[family-name:var(--font-display)] font-bold text-base tracking-widest text-[var(--color-text-primary)]">
+              <h1 className="font-display font-bold text-base tracking-widest text-(--color-text-primary)">
                 RESCUENODE ZERO
               </h1>
-              <p className="text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)] tracking-wider">
+              <p className="text-[10px] font-mono text-(--color-text-muted) tracking-wider">
                 AIR-GAPPED TRIAGE INTELLIGENCE
               </p>
             </div>
@@ -130,12 +130,12 @@ export default function Dashboard() {
           {latencyMs !== null && <LatencyBadge latencyMs={latencyMs} />}
           <OfflineBadge />
           {fusionMethod && (
-            <span className="text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)] bg-[var(--color-surface)] px-3 py-1.5 rounded-full border border-[var(--color-border)]">
+            <span className="text-[10px] font-mono text-(--color-text-muted) bg-(--color-surface) px-3 py-1.5 rounded-full border border-(--color-border)">
               {fusionMethod.replace("_", " ").toUpperCase()}
             </span>
           )}
           {filtersApplied.length > 0 && (
-            <span className="text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-amber)] bg-[rgba(245,158,11,0.1)] px-3 py-1.5 rounded-full border border-[rgba(245,158,11,0.3)]">
+            <span className="text-[10px] font-mono text-(--color-amber) bg-[rgba(245,158,11,0.1)] px-3 py-1.5 rounded-full border border-[rgba(245,158,11,0.3)]">
               {filtersApplied.length} filter{filtersApplied.length > 1 ? "s" : ""} active
             </span>
           )}
@@ -147,7 +147,7 @@ export default function Dashboard() {
         {/* ── Left: Search + Results ── */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Search + Filters */}
-          <div className="shrink-0 px-6 py-4 space-y-3 border-b border-[var(--color-border)] bg-[rgba(15,23,42,0.6)]">
+          <div className="shrink-0 px-6 py-4 space-y-3 border-b border-(--color-border) bg-[rgba(15,23,42,0.6)]">
             <SearchBar onSearch={handleSearch} isLoading={isLoading} />
             <FilterChips filters={filters} onFilterChange={handleFilterChange} />
           </div>
@@ -163,7 +163,7 @@ export default function Dashboard() {
         </div>
 
         {/* ── Right: Sidebar ── */}
-        <aside className="w-72 shrink-0 border-l border-[var(--color-border)] flex flex-col overflow-hidden bg-[rgba(15,23,42,0.5)]">
+        <aside className="w-72 shrink-0 border-l border-(--color-border) flex flex-col overflow-hidden bg-[rgba(15,23,42,0.5)]">
           {/* Upload */}
           <div className="px-3 pt-3">
             <UploadZone onUploadComplete={() => {}} />
@@ -175,12 +175,12 @@ export default function Dashboard() {
           </div>
 
           {/* Footer stats */}
-          <div className="px-3 py-3 border-t border-[var(--color-border)] text-center">
-            <p className="text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)]">
+          <div className="px-3 py-3 border-t border-(--color-border) text-center">
+            <p className="text-[10px] font-mono text-(--color-text-muted)">
               Powered by{" "}
-              <span className="text-[var(--color-cyan)]">Actian VectorAI DB</span>
+              <span className="text-(--color-cyan)">Actian VectorAI DB</span>
             </p>
-            <p className="text-[9px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)] opacity-50 mt-0.5">
+            <p className="text-[9px] font-mono text-(--color-text-muted) opacity-50 mt-0.5">
               When the grid goes dark, the AI stays on.
             </p>
           </div>
@@ -215,36 +215,36 @@ function StatusBar({ results }: { results: number }) {
   };
 
   return (
-    <footer className="status-bar shrink-0 px-6 py-1.5 flex items-center justify-between text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)] z-10">
+    <footer className="status-bar shrink-0 px-6 py-1.5 flex items-center justify-between text-[10px] font-mono text-(--color-text-muted) z-10">
       <div className="flex items-center gap-6">
         <span>
           SYS <span className="stat-value font-semibold">{formatUptime(uptime)}</span>
         </span>
         <span>
-          DOCS <span className="text-[var(--color-text-secondary)] font-semibold">44</span>
+          DOCS <span className="text-(--color-text-secondary) font-semibold">44</span>
         </span>
         <span>
-          VECTORS <span className="text-[var(--color-text-secondary)] font-semibold">16,896</span>
+          VECTORS <span className="text-(--color-text-secondary) font-semibold">16,896</span>
         </span>
         <span>
-          LAST QUERY <span className="text-[var(--color-text-secondary)] font-semibold">{results > 0 ? `${results} hits` : "—"}</span>
+          LAST QUERY <span className="text-(--color-text-secondary) font-semibold">{results > 0 ? `${results} hits` : "—"}</span>
         </span>
       </div>
       <div className="flex items-center gap-4">
         <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-(--color-green) animate-pulse" />
           VectorAI DB
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-(--color-green) animate-pulse" />
           Embeddings
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-(--color-green) animate-pulse" />
           Whisper
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green)] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-(--color-green) animate-pulse" />
           CLIP
         </span>
       </div>

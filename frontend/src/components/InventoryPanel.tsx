@@ -9,7 +9,7 @@ interface InventoryPanelProps {
 export function InventoryPanel({ items }: InventoryPanelProps) {
   return (
     <div className="card-glass p-4 h-full flex flex-col">
-      <h2 className="text-[var(--color-text-primary)] font-[family-name:var(--font-display)] font-bold text-sm tracking-wider uppercase mb-3">
+      <h2 className="text-(--color-text-primary) font-display font-bold text-sm tracking-wider uppercase mb-3">
         Inventory
       </h2>
 
@@ -26,10 +26,10 @@ export function InventoryPanel({ items }: InventoryPanelProps) {
             >
               <div className="flex-1 min-w-0">
                 <span
-                  className={`font-[family-name:var(--font-body)] ${
+                  className={`font-body ${
                     isLow
-                      ? "text-[var(--color-text-primary)]"
-                      : "text-[var(--color-text-secondary)]"
+                      ? "text-(--color-text-primary)"
+                      : "text-(--color-text-secondary)"
                   } truncate block`}
                 >
                   {item.name}
@@ -38,20 +38,20 @@ export function InventoryPanel({ items }: InventoryPanelProps) {
               <div className="flex items-center gap-2 shrink-0 ml-2">
                 {isLow && (
                   <span
-                    className={`text-[10px] font-[family-name:var(--font-mono)] font-semibold ${
-                      isCritical ? "text-[var(--color-red)]" : "text-[var(--color-amber)]"
+                    className={`text-[10px] font-mono font-semibold ${
+                      isCritical ? "text-(--color-red)" : "text-(--color-amber)"
                     }`}
                   >
                     {isCritical ? "CRITICAL" : "Low stock"}
                   </span>
                 )}
                 <span
-                  className={`font-[family-name:var(--font-mono)] font-bold tabular-nums w-8 text-right ${
+                  className={`font-mono font-bold tabular-nums w-8 text-right ${
                     isCritical
-                      ? "text-[var(--color-red)]"
+                      ? "text-(--color-red)"
                       : isLow
-                        ? "text-[var(--color-amber)]"
-                        : "text-[var(--color-text-primary)]"
+                        ? "text-(--color-amber)"
+                        : "text-(--color-text-primary)"
                   }`}
                 >
                   {item.quantity}
@@ -63,9 +63,9 @@ export function InventoryPanel({ items }: InventoryPanelProps) {
       </div>
 
       {/* Summary */}
-      <div className="mt-3 pt-3 border-t border-[var(--color-border)] flex justify-between text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)]">
+      <div className="mt-3 pt-3 border-t border-(--color-border) flex justify-between text-[10px] font-mono text-(--color-text-muted)">
         <span>{items.length} items tracked</span>
-        <span className="text-[var(--color-red)]">
+        <span className="text-(--color-red)">
           {items.filter((i) => i.quantity < 5).length} low
         </span>
       </div>

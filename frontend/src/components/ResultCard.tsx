@@ -70,15 +70,15 @@ function getTypeLabel(result: SearchResultItem) {
 function getPriorityColor(priority: string | undefined) {
   switch (priority) {
     case "IMMEDIATE":
-      return "text-[var(--color-red)]";
+      return "text-(--color-red)";
     case "DELAYED":
-      return "text-[var(--color-amber)]";
+      return "text-(--color-amber)";
     case "MINOR":
-      return "text-[var(--color-green)]";
+      return "text-(--color-green)";
     case "EXPECTANT":
-      return "text-[var(--color-text-muted)]";
+      return "text-(--color-text-muted)";
     default:
-      return "text-[var(--color-text-secondary)]";
+      return "text-(--color-text-secondary)";
   }
 }
 
@@ -87,7 +87,7 @@ function AudioWaveform() {
   const bars = [3, 6, 4, 8, 5, 9, 3, 7, 5, 8, 4, 6, 3, 7, 5, 9, 4, 6, 3, 5, 7, 4, 8, 3, 6];
   return (
     <div className="flex items-end gap-[2px] h-10 py-2">
-      <button className="shrink-0 mr-2 w-8 h-8 rounded-full bg-[var(--color-cyan)] flex items-center justify-center text-white">
+      <button className="shrink-0 mr-2 w-8 h-8 rounded-full bg-(--color-cyan) flex items-center justify-center text-white">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
           <polygon points="2,0 12,6 2,12" />
         </svg>
@@ -117,25 +117,25 @@ export function ResultCard({ result }: ResultCardProps) {
         <div className="flex items-center gap-3">
           {getTypeIcon(result)}
           <div>
-            <span className="text-[11px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)] uppercase tracking-wider">
+            <span className="text-[11px] font-mono text-(--color-text-muted) uppercase tracking-wider">
               {getTypeLabel(result)}
             </span>
             {priority && (
               <span
-                className={`ml-2 text-[10px] font-[family-name:var(--font-mono)] ${getPriorityColor(priority)} uppercase`}
+                className={`ml-2 text-[10px] font-mono ${getPriorityColor(priority)} uppercase`}
               >
                 {priority}
               </span>
             )}
           </div>
         </div>
-        <span className="text-[var(--color-cyan)] font-[family-name:var(--font-mono)] text-xs tabular-nums shrink-0">
+        <span className="text-(--color-cyan) font-mono text-xs tabular-nums shrink-0">
           {(result.score * 100).toFixed(1)}%
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="text-[var(--color-text-primary)] font-semibold text-sm leading-tight">
+      <h3 className="text-(--color-text-primary) font-semibold text-sm leading-tight">
         {result.title}
       </h3>
 
@@ -143,14 +143,14 @@ export function ResultCard({ result }: ResultCardProps) {
       {result.data_type === "AUDIO" && <AudioWaveform />}
 
       {/* Content */}
-      <p className="text-[var(--color-text-secondary)] text-xs leading-relaxed font-[family-name:var(--font-mono)]">
+      <p className="text-(--color-text-secondary) text-xs leading-relaxed font-mono">
         {result.data_type === "AUDIO" && (
-          <span className="text-[var(--color-text-muted)] text-[10px] block mb-1 uppercase tracking-wider">
+          <span className="text-(--color-text-muted) text-[10px] block mb-1 uppercase tracking-wider">
             WHISPER TRANSCRIPT
           </span>
         )}
         {result.data_type === "PHOTO" && (
-          <span className="text-[var(--color-text-muted)] text-[10px] block mb-1 uppercase tracking-wider">
+          <span className="text-(--color-text-muted) text-[10px] block mb-1 uppercase tracking-wider">
             AI CAPTION
           </span>
         )}
@@ -158,19 +158,19 @@ export function ResultCard({ result }: ResultCardProps) {
       </p>
 
       {/* Score bar */}
-      <div className="w-full bg-[var(--color-surface-elevated)] rounded-full h-[3px]">
+      <div className="w-full bg-(--color-surface-elevated) rounded-full h-[3px]">
         <div className="score-bar" style={{ width: `${result.score * 100}%` }} />
       </div>
 
       {/* Metadata footer */}
-      <div className="flex flex-wrap gap-2 text-[10px] font-[family-name:var(--font-mono)] text-[var(--color-text-muted)]">
+      <div className="flex flex-wrap gap-2 text-[10px] font-mono text-(--color-text-muted)">
         {unCode && (
-          <span className="bg-[rgba(239,68,68,0.1)] text-[var(--color-red)] px-2 py-0.5 rounded">
+          <span className="bg-[rgba(239,68,68,0.1)] text-(--color-red) px-2 py-0.5 rounded">
             {unCode}
           </span>
         )}
         {zone && (
-          <span className="bg-[rgba(6,182,212,0.1)] text-[var(--color-cyan)] px-2 py-0.5 rounded">
+          <span className="bg-[rgba(6,182,212,0.1)] text-(--color-cyan) px-2 py-0.5 rounded">
             {zone.replace("_", " ")}
           </span>
         )}
@@ -180,11 +180,11 @@ export function ResultCard({ result }: ResultCardProps) {
           </span>
         )}
         {equipment && equipment.length > 0 && (
-          <span className="bg-[rgba(245,158,11,0.1)] text-[var(--color-amber)] px-2 py-0.5 rounded">
+          <span className="bg-[rgba(245,158,11,0.1)] text-(--color-amber) px-2 py-0.5 rounded">
             PPE: {equipment.join(", ")}
           </span>
         )}
-        <span className="ml-auto text-[var(--color-text-muted)] opacity-60">
+        <span className="ml-auto text-(--color-text-muted) opacity-60">
           {result.match_type}
         </span>
       </div>

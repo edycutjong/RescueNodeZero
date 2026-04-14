@@ -60,7 +60,7 @@ export function FilterChips({ filters, onFilterChange }: FilterChipsProps) {
     <div className="flex flex-col gap-3">
       {/* Row 1: Zone + Priority + Inventory */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-[var(--color-text-muted)] text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider mr-1">
+        <span className="text-(--color-text-muted) text-xs font-mono uppercase tracking-wider mr-1">
           Zone
         </span>
         {ZONES.map((zone) => (
@@ -73,9 +73,9 @@ export function FilterChips({ filters, onFilterChange }: FilterChipsProps) {
           </button>
         ))}
 
-        <span className="text-[var(--color-border)] mx-2">|</span>
+        <span className="text-(--color-border) mx-2">|</span>
 
-        <span className="text-[var(--color-text-muted)] text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider mr-1">
+        <span className="text-(--color-text-muted) text-xs font-mono uppercase tracking-wider mr-1">
           Priority
         </span>
         {PRIORITIES.map((p) => (
@@ -84,9 +84,9 @@ export function FilterChips({ filters, onFilterChange }: FilterChipsProps) {
             onClick={() => togglePriority(p)}
             className={`chip ${filters.priority_level === p ? "chip-active" : ""} ${
               p === "IMMEDIATE"
-                ? "hover:border-[var(--color-red)]"
+                ? "hover:border-(--color-red)"
                 : p === "DELAYED"
-                  ? "hover:border-[var(--color-amber)]"
+                  ? "hover:border-(--color-amber)"
                   : ""
             }`}
           >
@@ -97,7 +97,7 @@ export function FilterChips({ filters, onFilterChange }: FilterChipsProps) {
 
       {/* Row 2: Data Type + Inventory + Allergies */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-[var(--color-text-muted)] text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider mr-1">
+        <span className="text-(--color-text-muted) text-xs font-mono uppercase tracking-wider mr-1">
           Type
         </span>
         {DATA_TYPES.map((type) => (
@@ -110,7 +110,7 @@ export function FilterChips({ filters, onFilterChange }: FilterChipsProps) {
           </button>
         ))}
 
-        <span className="text-[var(--color-border)] mx-2">|</span>
+        <span className="text-(--color-border) mx-2">|</span>
 
         <button
           onClick={toggleInventory}
@@ -119,16 +119,16 @@ export function FilterChips({ filters, onFilterChange }: FilterChipsProps) {
           ✓ Inventory Available
         </button>
 
-        <span className="text-[var(--color-border)] mx-2">|</span>
+        <span className="text-(--color-border) mx-2">|</span>
 
-        <span className="text-[var(--color-text-muted)] text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider mr-1">
+        <span className="text-(--color-text-muted) text-xs font-mono uppercase tracking-wider mr-1">
           Exclude Allergy
         </span>
         {ALLERGIES.map((a) => (
           <button
             key={a}
             onClick={() => toggleAllergy(a)}
-            className={`chip ${(filters.exclude_allergies || []).includes(a) ? "chip-active border-[var(--color-red)]! text-[var(--color-red)]! bg-[rgba(239,68,68,0.1)]!" : ""}`}
+            className={`chip ${(filters.exclude_allergies || []).includes(a) ? "chip-active border-(--color-red)! text-(--color-red)! bg-[rgba(239,68,68,0.1)]!" : ""}`}
           >
             ⚠ {a}
           </button>
