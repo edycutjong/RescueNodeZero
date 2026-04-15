@@ -5,8 +5,15 @@ const fs = require('fs');
 async function capture() {
   console.log('📸 Capturing clean screenshots...');
 
-  const docsDir = path.join(__dirname, '..', 'docs');
+  const docsDir = path.join(__dirname, '..', 'docs', 'all_searches');
   if (!fs.existsSync(docsDir)) fs.mkdirSync(docsDir, { recursive: true });
+
+  const seedFile = fs.readFileSync(path.join(__dirname, '..', 'backend', 'data', 'seed_protocols.py'), 'utf-8');
+  const titles = [...seedFile.matchAll(/"title":\s*"([^"]+)"/g)].map(m => m[1]);
+  const names = [...seedFile.matchAll(/"name":\s*"([^"]+)"/g)].map(m => m[1]);
+  
+  const allTerms = [...titles, ...names];
+  console.log(`Found ${allTerms.length} search terms in seed_protocols.py.`);
 
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
@@ -15,31 +22,32 @@ async function capture() {
   });
   const page = await context.newPage();
 
-  // 1. Dashboard empty state
-  console.log('1/3 Dashboard empty state...');
+  console.log('0 - Dashboard empty state...');
   await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);
   await page.screenshot({ path: path.join(docsDir, 'screenshot-dashboard.png') });
-  console.log('   ✅ screenshot-dashboard.png');
 
-  // 2. Hazmat search results
-  console.log('2/3 Hazmat search...');
   const searchInput = page.locator('input[type="text"]').first();
-  await searchInput.fill('Hazmat');
-  await searchInput.press('Enter');
-  await page.waitForTimeout(2000);
-  await page.screenshot({ path: path.join(docsDir, 'screenshot-hazmat-search.png') });
-  console.log('   ✅ screenshot-hazmat-search.png');
 
-  // 3. Scroll down for more results
-  console.log('3/3 Scrolled results...');
-  await page.evaluate(() => window.scrollBy(0, 500));
-  await page.waitForTimeout(500);
-  await page.screenshot({ path: path.join(docsDir, 'screenshot-hazmat-scrolled.png') });
-  console.log('   ✅ screenshot-hazmat-scrolled.png');
+  for (let i = 0; i < allTerms.length; i++) {
+    const term = allTerms[i];
+    console.log(`${i+1}/${allTerms.length} Searching: ${term}...`);
+    
+    // Clear and fill input
+    await searchInput.click({ clickCount: 3 }); // Select all text
+    await searchInput.press('Backspace'); // Delete selection
+    await searchInput.fill(term);
+    await searchInput.press('Enter');
+    
+    // Wait for search results
+    await page.waitForTimeout(1200);
+    
+    const safeName = term.replace(/[^a-z0-9]/gi, '_').toLowerCase().substring(0, 50);
+    await page.screenshot({ path: path.join(docsDir, `search_${safeName}.png`) });
+  }
 
   await browser.close();
-  console.log(`\n🎉 All screenshots saved to: ${docsDir}`);
+  console.log(`\n🎉 All ${allTerms.length} screenshots saved to: ${docsDir}`);
 }
 
 capture().catch(console.error);

@@ -1,24 +1,40 @@
 #!/bin/bash
+# convert_gifs.sh — Convert all WebM files to optimized, looping GIFs (<10MB)
+# Usage: ./scripts/convert_gifs.sh [directory]
+# Default directory: docs/
 
-echo "🎥 Converting WebM files to high-quality GIFs..."
+DIR="${1:-docs}"
 
-# Loop through all webm files in the docs directory
-for file in docs/*.webm; do
-  # Check if the file actually exists to avoid loop issues
+echo "🎥 Converting WebM files in '$DIR' to high-quality GIFs..."
+
+# Check for ffmpeg
+FFMPEG=$(command -v ffmpeg || echo "$HOME/homebrew/bin/ffmpeg")
+if [ ! -x "$FFMPEG" ]; then
+  echo "❌ ffmpeg not found. Install with: brew install ffmpeg"
+  exit 1
+fi
+
+count=0
+for file in "$DIR"/*.webm; do
   if [ -f "$file" ]; then
-    # Extract just the filename without the .webm extension
     filename=$(basename "$file" .webm)
-    output="docs/$filename.gif"
+    output="$DIR/$filename.gif"
     
     echo "  -> Converting $filename.webm to $filename.gif"
     
-    # Run ffmpeg with high-quality palette generation and scaling
-    # fps=15 (smooth enough for UI, keeps file size down)
-    # scale=1280:-1 (resize width to 1280px, auto-calculate height)
-    /Users/edycu/homebrew/bin/ffmpeg -y -hide_banner -loglevel error -i "$file" -vf "fps=10,scale=800:-1:flags=lanczos,split[s0][s1];[s0]palettegen=stats_mode=diff[p];[s1][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" "$output"
+    # fps=10, width=800px, diff-based palette for small file size
+    "$FFMPEG" -y -hide_banner -loglevel error -i "$file" \
+      -vf "fps=10,scale=800:-1:flags=lanczos,split[s0][s1];[s0]palettegen=stats_mode=diff[p];[s1][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" \
+      "$output"
     
-    echo "  ✅ Done: $output"
+    size=$(du -h "$output" | cut -f1)
+    echo "  ✅ Done: $output ($size)"
+    count=$((count + 1))
   fi
 done
 
-echo "🎉 All files successfully converted!"
+if [ $count -eq 0 ]; then
+  echo "⚠️  No .webm files found in '$DIR'"
+else
+  echo "🎉 $count file(s) converted successfully!"
+fi
