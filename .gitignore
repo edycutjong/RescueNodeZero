@@ -49,6 +49,7 @@ docker-data/
 *.log
 
 # YouTube video assets (too large for git)
+docs/youtube/*.mp4
 docs/youtube/*.webm
 docs/youtube/*.mp3
 docs/youtube/voiceover/
