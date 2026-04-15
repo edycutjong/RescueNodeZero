@@ -2,6 +2,8 @@
 
 > Ready to copy-paste into YouTube Studio
 
+**Live URL**: https://youtu.be/gftS77S8De0
+
 ---
 
 ## Video Title
@@ -20,15 +22,16 @@ When disasters strike, cloud infrastructure dies first. Cell towers collapse, da
 RescueNode Zero runs an entire AI-powered triage system on a single laptop — no cloud, no Wi-Fi, no dependencies. Sub-millisecond hybrid vector search across HAZMAT protocols, medical procedures, and field inventory. Powered by Actian VectorAI DB.
 
 ⏱️ Timestamps:
-0:00 — Hook: When the grid goes dark
-0:08 — Command Center Overview
-0:25 — Live HAZMAT Search: "chemical burn treatment acetone"
-0:40 — RRF Fusion: Semantic + Keyword in 0.9ms
-0:55 — Medical Triage: Crush Syndrome Protocol
-1:10 — Multimodal: Drone Image + Audio Ingestion
-1:25 — Allergen Safety Filters (penicillin exclusion)
-1:40 — Inventory Tracking with Critical Alerts
-1:50 — Why Air-Gapped AI Matters
+0:00 — RescueNode Zero: Air-Gapped Triage Intelligence
+0:18 — Hybrid Fusion Search (Sub-Millisecond Latency)
+0:34 — Live Demo: Crush Syndrome Triage
+0:58 — Drone Reconnaissance (Multimodal Intelligence)
+1:14 — Live Demo: Chemical Burn Protocol
+1:38 — Live Demo: HAZMAT Chlorine Gas Response
+2:02 — Audio Field Reports (Whisper Transcription)
+2:18 — Live Demo: Drone Sector Recon
+2:42 — HAZMAT Lookup (Instant Protocol Access)
+2:58 — Edge-Native AI: Zero Cloud Dependencies
 
 🔗 Links:
 💻 GitHub: https://github.com/edycutjong/RescueNodeZero

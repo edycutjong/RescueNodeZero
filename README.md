@@ -4,7 +4,7 @@
   <p><strong>Empowering disaster responders to find critical protocols in &lt;1ms using Actian VectorAI DB — 100% offline on a single laptop.</strong></p>
 
   [![Live Demo](https://img.shields.io/badge/🌐_Live-Demo-06b6d4.svg?style=for-the-badge)](http://localhost:3000)
-  [![Video Demo](https://img.shields.io/badge/🎬_Pitch-Video-ef4444.svg?style=for-the-badge)](https://youtube.com/)
+  [![Video Demo](https://img.shields.io/badge/🎬_Pitch-Video-ef4444.svg?style=for-the-badge)](https://youtu.be/gftS77S8De0)
   [![DoraHacks](https://img.shields.io/badge/🏆_DoraHacks-BUIDL-7c3aed.svg?style=for-the-badge)](https://dorahacks.io/)
 </div>
 
