@@ -3,9 +3,9 @@
   <p><em>Air-gapped multimodal triage intelligence hub — when the grid goes dark, the AI stays on.</em></p>
   <p><strong>Empowering disaster responders to find critical protocols in &lt;1ms using Actian VectorAI DB — 100% offline on a single laptop.</strong></p>
 
-  [![Live Demo](https://img.shields.io/badge/🌐_Live-Demo-06b6d4.svg?style=for-the-badge)](http://localhost:3000)
+  [![Live Demo](https://img.shields.io/badge/🌐_Live-Demo-06b6d4.svg?style=for-the-badge)](https://rescuenodezero.edycu.dev)
   [![Video Demo](https://img.shields.io/badge/🎬_Pitch-Video-ef4444.svg?style=for-the-badge)](https://youtu.be/gftS77S8De0)
-  [![DoraHacks](https://img.shields.io/badge/🏆_DoraHacks-BUIDL-7c3aed.svg?style=for-the-badge)](https://dorahacks.io/)
+  [![DoraHacks](https://img.shields.io/badge/🏆_DoraHacks-BUIDL-7c3aed.svg?style=for-the-badge)](https://dorahacks.io/buidl/43045)
 </div>
 
 ---
