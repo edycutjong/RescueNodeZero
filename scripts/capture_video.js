@@ -31,8 +31,8 @@ async function captureVideo(queryText, outputFilename) {
   const searchInput = page.locator('input[type="text"]').first();
   // Ensure we clear it just in case
   await searchInput.fill('');
-  // Type slowly, character by character like a human (slightly faster for longer queries)
-  const typeSpeed = queryText.length > 20 ? 100 : 200;
+  // Type rapidly like a skilled terminal operator (40ms per keystroke)
+  const typeSpeed = 40;
   await searchInput.pressSequentially(queryText, { delay: typeSpeed }); 
   await page.waitForTimeout(500);
   await searchInput.press('Enter');
