@@ -17,10 +17,12 @@
 
 ### 2. Instant HAZMAT Lookup with RRF Fusion
 <img src="https://github.com/user-attachments/assets/796b0159-ccc4-415e-aaf6-4ca108dab9e7" width="100%" alt="Hazardous Materials Search">
+
 > *Searching `chemical burn treatment acetone` — watch RRF fusion cross-reference HAZMAT and medical protocols in 0.9ms with zero internet.*
 
 ### 3. Medical Emergency Protocols
 <img src="https://github.com/user-attachments/assets/6ba8915c-7217-4a6b-9d35-ef6226966c69" width="100%" alt="Medical Triage Interface">
+
 > *Advanced medical triage protocols (like Crush Syndrome) available instantly offline — critical for field extraction teams.*
 
 ### 4. Multimodal Reconnaissance (Images & Audio)
@@ -36,6 +38,7 @@
     </td>
   </tr>
 </table>
+
 > *Cross-references standard text queries with MobileCLIP drone photo captions and Whisper-transcribed field audio reports.*
 
 ---
