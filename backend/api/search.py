@@ -15,7 +15,6 @@ from pydantic import BaseModel, Field
 
 from core import store
 from core.embeddings import embed_text
-from core.fusion import reciprocal_rank_fusion
 
 router = APIRouter(prefix="/api/search", tags=["search"])
 
@@ -70,25 +69,24 @@ async def hybrid_search(req: SearchRequest) -> SearchResponse:
     all_results = []
 
     for collection in req.collections:
-        if req.search_mode in ("semantic", "hybrid_fusion"):
+        if req.search_mode == "semantic":
             query_vec = embed_text(req.query)
             sem_results, _ = store.semantic_search(
                 query_vec, collection=collection, top_k=req.top_k, filters=filters_dict
             )
-            if req.search_mode == "semantic":
-                all_results.extend(sem_results)
-                continue
+            all_results.extend(sem_results)
 
-        if req.search_mode in ("keyword", "hybrid_fusion"):
+        elif req.search_mode == "keyword":
             kw_results, _ = store.keyword_search(
                 req.query, collection=collection, top_k=req.top_k, filters=filters_dict
             )
-            if req.search_mode == "keyword":
-                all_results.extend(kw_results)
-                continue
+            all_results.extend(kw_results)
 
-        if req.search_mode == "hybrid_fusion":
-            fused = reciprocal_rank_fusion(sem_results, kw_results, top_k=req.top_k)
+        elif req.search_mode == "hybrid_fusion":
+            query_vec = embed_text(req.query)
+            fused, _ = store.hybrid_search(
+                req.query, query_vec, collection=collection, top_k=req.top_k, filters=filters_dict
+            )
             all_results.extend(fused)
 
     # Deduplicate and re-sort across collections
