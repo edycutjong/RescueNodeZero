@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  # Actian VectorAI DB — TBD: replace with official image once confirmed
-  # vectorai-db:
-  #   image: actian/vectorai-db:latest
-  #   ports:
-  #     - "8100:8100"
-  #   volumes:
-  #     - vectorai-data:/data
-  #   restart: unless-stopped
+  # Actian VectorAI DB — Official Beta Image
+  vectorai-db:
+    image: williamimoh/actian-vectorai-db:latest
+    ports:
+      - "50051:50051"
+    volumes:
+      - vectorai-data:/data
+    restart: unless-stopped
 
   backend:
     build: ./backend
@@ -16,13 +16,13 @@ services:
       - "8000:8000"
     environment:
       - VECTORAI_HOST=vectorai-db
-      - VECTORAI_PORT=8100
-      - DEMO_MODE=true
+      - VECTORAI_PORT=50051
+      - DEMO_MODE=false
     volumes:
       - ./backend:/app
       - ./uploads:/app/uploads
-    # depends_on:
-    #   - vectorai-db
+    depends_on:
+      - vectorai-db
     restart: unless-stopped
 
   frontend:
