@@ -92,6 +92,8 @@ We built RescueNode Zero specifically to demonstrate **Actian VectorAI DB's edge
 | **Filtered Queries** | [`backend/api/search.py`](./backend/api/search.py) | SQL-style metadata filtering (allergens, categories) on VectorAI results |
 
 > **Why VectorAI DB?** Traditional databases can't do semantic similarity search. Cloud vector DBs (Pinecone, Weaviate) require internet. Actian VectorAI DB is the only solution that delivers **sub-millisecond vector search on a local Docker container** — exactly what you need when infrastructure is destroyed.
+>
+> *(For reference on the underlying technology, see the [Actian VectorAI DB Beta Repository](https://github.com/hackmamba-io/actian-vectorAI-db-beta))*
 
 ---
 
