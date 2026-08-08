@@ -37,7 +37,7 @@ describe('ResultCard', () => {
       content_preview: 'Clear the area.',
       score: 0.95,
       data_type: 'TEXT' as const,
-      match_type: 'exact' as const,
+      match_type: 'keyword' as const,
       source: 'mock',
       metadata: {
         category: 'HAZMAT',
@@ -63,7 +63,7 @@ describe('ResultCard', () => {
       content_preview: 'Patient is stable.',
       score: 0.75,
       data_type: 'AUDIO' as const,
-      match_type: 'hybrid' as const,
+      match_type: 'fused' as const,
       source: 'mock',
       metadata: {
         priority_level: 'MINOR',
@@ -83,7 +83,7 @@ describe('ResultCard', () => {
       content_preview: 'Collapsed building structure.',
       score: 0.60,
       data_type: 'PHOTO' as const,
-      match_type: 'hybrid' as const,
+      match_type: 'fused' as const,
       source: 'mock',
       metadata: {
         priority_level: 'EXPECTANT',
@@ -103,7 +103,7 @@ describe('ResultCard', () => {
       content_preview: 'Unknown data.',
       score: 0.50,
       data_type: 'TEXT' as const,
-      match_type: 'hybrid' as const,
+      match_type: 'fused' as const,
       source: 'mock',
       metadata: {
         priority_level: 'UNKNOWN', // hits the default branch in getPriorityColor
@@ -122,7 +122,7 @@ describe('ResultCard', () => {
       content_preview: 'Data.',
       score: 0.50,
       data_type: 'TEXT' as const,
-      match_type: 'hybrid' as const,
+      match_type: 'fused' as const,
       source: 'mock',
       metadata: {
         equipment_required: []
